@@ -1,0 +1,23 @@
+1) Tworzenie projektu
+    -> https://start.spring.io/
+    -> dodajemy dependencies:
+        => Spring Web
+        => Spring Boot DevTools
+        => Lombok
+    -> klikamy 'Generate' -> pobieramy jako zip -> odpakowujemy do folderu pracowego
+        -> Idea -> open -> wybieramy plik pom.xml -> open as a project
+    -> nowe elementy:
+        => src/main/resources/static/  <- folder na .html, .css, .js itp.
+        => src/main/resources/templates/  <- dynamic content (thymeleaf, groovy itp.)
+        => src/main/resources/application.properties - do konfigurowania elementów
+            takich jak DB, porty itp.
+    -> dodajemy (kopiujemy z innego projektu) plik konfiguracyjny Logbacka
+        i zmieniamy nazwę na 'logback-spring.xml' (aby Spring Boot mógł kontrolować inicjalizację)
+        => dzięki wykorzystaniu Spring Boot, możemy usunąć sekcje <appender> i <root>
+        => dodajemy domyślną konfigurację:
+            <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    -> automatycznie utworzona klasa '[nazwaProjektu]Application' skanuje pliki
+        znajdujące się w tym samym pakiecie (przeniesienie -> errory)
+    -> metody oznaczone @GetMapping w kontrolerze działają bez wpisania nazwy projektu
+        do paska adresu, np. @GetMapping("home") zadziała dla adresu
+        localhost:8080/home
