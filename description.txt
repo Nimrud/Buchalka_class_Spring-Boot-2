@@ -21,3 +21,20 @@
     -> metody oznaczone @GetMapping w kontrolerze działają bez wpisania nazwy projektu
         do paska adresu, np. @GetMapping("home") zadziała dla adresu
         localhost:8080/home
+        => jeśli chcemy dodać nazwę projektu 'pomiędzy', to na poziomie klasy
+            dodajemy @RequestMapping("[nazwaProjektu]")
+2) Dodanie kolorowych (ANSI) wpisów w konsoli IDEA
+    -> w pliku 'application.properties' dodajemy
+        spring.output.ansi.enabled=always
+3) Dodanie prostego widoku
+    -> w katalogu 'main' tworzymy katalog 'webapp'
+    -> w nim tworzymy 'WEB-INF'
+    -> w nim tworzymy 'views', a w środku plik .jsp
+    -> w kontrolerze tworzymy metodę do obsługi widoku
+    -> w 'application.properties' dodajemy ścieżkę do folderu z widokami oraz z rozszerzeniem
+        spring.mvc.view.prefix= /WEB-INF/view/
+        spring.mvc.view.suffix= .jsp
+    -> UWAGA! To nie zadziała, z uwagi na pewne ograniczenia plików .jsp przy
+        korzystaniu ze Spring Boot (a konkretnie wbudowany serwer Tomcat)
+        => PLIKI .JSP NIE ZADZIAŁAJĄ z uwagi na zakodowany w Tomcata wzorzec plików
+        => można zamiast nich wykorzystać Thymeleaf
